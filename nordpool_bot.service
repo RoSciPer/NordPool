@@ -1,0 +1,18 @@
+[Unit]
+Description=NordPool Telegram Shelly Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/projects/NordPool
+EnvironmentFile=/opt/projects/NordPool/.env
+ExecStart=/opt/projects/NordPool/venv/bin/python /opt/projects/NordPool/telegram_bot.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/projects/NordPool/telegram_bot.log
+StandardError=append:/opt/projects/NordPool/telegram_bot.log
+
+[Install]
+WantedBy=multi-user.target
